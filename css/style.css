@@ -5,6 +5,29 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
-    
+#calculator {
+    display: grid;
+    grid-template-columns: ;
+    gap: 5px;
+    padding: ;
+    background: ;
+    border: ;
+    border-radius: 0;
 }
+#calculator {
+    padding: ;
+}
+
+
+/* .calculator {
+    display: flex;
+    width: 500px;
+    margin: 50px;
+    border: 1px solid;
+    border-radius: 10px;
+    text-align: center;
+} */
+/* .button {
+    width: 80px;
+    height: 800px;
+} */
