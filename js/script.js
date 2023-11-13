@@ -1,25 +1,45 @@
-let input = document.getElementById('answerBox')
-let buttons = document.querySelectorAll('button')
+document.addEventListener('DOMContentLoaded', function () {
+  let input = document.getElementById('answerBox');
+  let buttons = document.querySelectorAll('button');
 
-let string = " ";
-let arr = Array.from(buttons);
-arr.forEach(button => {
-  button.addEventListener('click', (e) => {
-    if(e.target.innerHTML == '='){
-      string = eval(string);
-      input.value = string;
-    }
+  buttons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      let buttonText = e.target.textContent;
 
-    else if(e.target.innerHTML == 'AC'){
-      string = "";
-      input.value = string
-    }
-    else if(e.target.innerHTML == 'DEL'){
-      string = string.substring(0, string.length-1)
-      input.value = string;
-    }
+      switch (buttonText) {
+        case '=':
+          calculate();
+          break;
+        case 'AC':
+          clearInput();
+          break;
+        case 'DEL':
+          deleteLast();
+          break;
+        default:
+          appendToInput(buttonText);
+          break;
+      }
+    });
+  });
 
-    string += e.target.innerHTML;
-    input.value = string;
-  })
-})
+  function appendToInput(value) {
+    input.value += value;
+  }
+
+  function clearInput() {
+    input.value = '';
+  }
+
+  function deleteLast() {
+    input.value = input.value.slice(0, -1);
+  }
+
+  function calculate() {
+    try {
+      input.value = eval(input.value);
+    } catch (error) {
+      input.value = 'Error';
+    }
+  }
+});
